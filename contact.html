@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Nexora Studio</title>
+  <meta name="description" content="Start a project with Nexora Studio. Tell us what you're building, who it's for and when it needs to exist. The founders reply within 24 hours." />
+  <meta name="theme-color" content="#f4f1e8" />
+  <meta name="color-scheme" content="light" />
+  <link rel="canonical" href="https://nexorastudio.world/contact.html" />
+  <link rel="icon" href="./assets/logo-chip.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./assets/logo-chip.svg" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nexora Studio" />
+  <meta property="og:title" content="Contact — Nexora Studio" />
+  <meta property="og:description" content="Start a project with a founder-led studio. Two engagements per quarter." />
+  <meta property="og:url" content="https://nexorastudio.world/contact.html" />
+  <meta property="og:image" content="https://nexorastudio.world/assets/og.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact — Nexora Studio" />
+  <meta name="twitter:description" content="Start a project with a founder-led studio. Two engagements per quarter." />
+  <meta name="twitter:image" content="https://nexorastudio.world/assets/og.png" />
+
+  <link rel="preload" href="./assets/fonts/manrope-800.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="./assets/fonts/manrope-500.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="./styles.css" />
+  <script>
+    document.documentElement.classList.add('js');
+    window.setTimeout(function () {
+      if (!document.body.classList.contains('is-ready')) document.documentElement.classList.remove('js');
+    }, 6000);
+  </script>
+</head>
+<body data-scene-depth="0.3">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="cursor" aria-hidden="true">
+    <span class="cursor__dot"></span>
+    <span class="cursor__ring"></span>
+  </div>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="grid-frame" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="scene-fallback" aria-hidden="true"></div>
+  <canvas id="scene" aria-hidden="true"></canvas>
+
+  <header class="site-header" id="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="./index.html" aria-label="Nexora Studio — home">
+        <img class="brand__mark" src="./assets/logo-mark.png" alt="" width="26" height="26" />
+        <span class="brand__type">Nexora<span>Studio</span></span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <a href="./index.html">Home</a>
+        <a href="./studio.html">Studio</a>
+        <a href="./work.html">Work</a>
+        <a href="./journal.html">Journal</a>
+        <a href="./team.html">Team</a>
+        <a href="./contact.html" class="is-active" aria-current="page">Contact</a>
+      </nav>
+
+      <div class="site-header__actions">
+        <div class="lang-switch" data-lang-group role="group" aria-label="Language">
+          <button type="button" data-lang="en">EN</button><span aria-hidden="true">/</span><button type="button" data-lang="ru">RU</button><span aria-hidden="true">/</span><button type="button" data-lang="uz">UZ</button>
+        </div>
+        <span class="header-time" aria-label="Local time in Fergana"><span data-clock>FER 00:00</span></span>
+        <a class="pill pill--ghost header-cta" href="mailto:support@nexorastudio.world?subject=Project%20inquiry%20%E2%80%94%20Nexora%20Studio">Start a project <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="menu-toggle__label">Menu</span>
+          <span class="menu-toggle__icon" aria-hidden="true"><i></i><i></i></span>
+        </button>
+      </div>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+  </header>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav class="mobile-menu__nav" aria-label="Mobile">
+      <a href="./index.html"><span>01</span>Home</a>
+      <a href="./studio.html"><span>02</span>Studio</a>
+      <a href="./work.html"><span>03</span>Work</a>
+      <a href="./journal.html"><span>04</span>Journal</a>
+      <a href="./team.html"><span>05</span>Team</a>
+      <a href="./contact.html" aria-current="page"><span>06</span>Contact</a>
+    </nav>
+    <div class="mobile-menu__foot">
+      <a href="mailto:support@nexorastudio.world">support@nexorastudio.world</a>
+      <span>Fergana, Uzbekistan · <span data-clock>FER 00:00</span></span>
+      <div class="lang-switch lang-switch--menu" data-lang-group role="group" aria-label="Language">
+        <button type="button" data-lang="en">EN</button><span aria-hidden="true">/</span><button type="button" data-lang="ru">RU</button><span aria-hidden="true">/</span><button type="button" data-lang="uz">UZ</button>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="page-hero" id="top" data-mood="4">
+      <div class="page-hero__scrim" aria-hidden="true"></div>
+      <div class="page-hero__inner">
+        <div class="eyebrow reveal"><span class="eyebrow__idx">04</span> Contact</div>
+        <div class="page-hero__head">
+          <h1 class="page-hero__title page-hero__title--gradient">
+            <span class="reveal">Let's build something</span>
+            <span class="reveal" data-delay="1"><em>that holds.</em></span>
+          </h1>
+          <p class="page-hero__lede reveal" data-delay="2">Tell us what you're building, who it's for and when it needs to exist. The founders reply within 24 hours.</p>
+        </div>
+        <div class="page-hero__foot reveal" data-delay="3">
+          <div class="page-hero__meta">
+            <span><b>&lt; 24h</b> Reply time</span>
+            <span><b>02 / quarter</b> Capacity</span>
+            <span><b>Fergana</b> Uzbekistan</span>
+          </div>
+          <span class="mono">Fergana local time — <span data-clock>FER 00:00</span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" data-mood="4">
+      <div class="section__inner">
+        <div class="contact__action reveal" data-delay="1">
+          <a class="contact__email" href="mailto:support@nexorastudio.world?subject=Project%20inquiry%20%E2%80%94%20Nexora%20Studio&amp;body=Company%3A%0AWhat%20we%27re%20building%3A%0ATimeline%3A%0ABudget%20range%3A">
+            support@nexorastudio.world <span aria-hidden="true">↗</span>
+          </a>
+          <button class="copy-btn" type="button" id="copy-email" data-email="support@nexorastudio.world" aria-label="Copy email address">
+            <span class="copy-btn__icon" aria-hidden="true"></span><span class="copy-btn__label">Copy</span>
+          </button>
+        </div>
+
+        <form class="contact-form reveal" id="contact-form" data-delay="2" novalidate>
+          <div class="contact-form__head">
+            <h2 class="contact-form__title">Start a brief</h2>
+            <span class="mono">Fields marked * are required</span>
+          </div>
+
+          <div class="contact-form__grid">
+            <label class="field">
+              <span class="field__label">Name *</span>
+              <input type="text" name="name" required maxlength="120" autocomplete="name" placeholder="Your name" data-i18n-attr="placeholder:Your name" />
+            </label>
+            <label class="field">
+              <span class="field__label">Email *</span>
+              <input type="email" name="email" required maxlength="254" autocomplete="email" inputmode="email" placeholder="you@company.com" data-i18n-attr="placeholder:you@company.com" />
+            </label>
+            <label class="field">
+              <span class="field__label">Company</span>
+              <input type="text" name="company" maxlength="160" autocomplete="organization" placeholder="Where you work" data-i18n-attr="placeholder:Where you work" />
+            </label>
+            <label class="field field--select">
+              <span class="field__label">Project type</span>
+              <select name="projectType">
+                <option value="">Select one</option>
+                <option value="Web platform">Web platform</option>
+                <option value="Mobile app">Mobile app</option>
+                <option value="AI product">AI product</option>
+                <option value="Brand &amp; site">Brand &amp; site</option>
+                <option value="Something else">Something else</option>
+              </select>
+            </label>
+            <label class="field field--select">
+              <span class="field__label">Budget</span>
+              <select name="budget">
+                <option value="">Not sure yet</option>
+                <option value="Under $5k">Under $5k</option>
+                <option value="$5–15k">$5–15k</option>
+                <option value="$15–40k">$15–40k</option>
+                <option value="$40k+">$40k+</option>
+              </select>
+            </label>
+            <label class="field field--full">
+              <span class="field__label">Project *</span>
+              <textarea name="message" rows="5" required maxlength="4000" placeholder="What are we building? Scope, users, timeline." data-i18n-attr="placeholder:What are we building? Scope, users, timeline."></textarea>
+            </label>
+          </div>
+
+          <div class="contact-form__hp" aria-hidden="true">
+            <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+          </div>
+
+          <div class="contact-form__foot">
+            <button class="pill pill--solid contact-form__submit" type="submit">
+              <span class="contact-form__submit-label">Send brief</span> <span aria-hidden="true">↗</span>
+            </button>
+            <p class="mono contact-form__note">We reply within 24 hours, directly from a founder. No newsletter, ever.</p>
+          </div>
+          <p class="contact-form__status" id="contact-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="contact__grid reveal" data-delay="3">
+          <div><span class="mono">Basecamp</span><b>Fergana, Uzbekistan</b><span>UTC+5 · Asia/Tashkent</span></div>
+          <div><span class="mono">Response</span><b>Within 24 hours</b><span>Directly from the founders</span></div>
+          <div><span class="mono">Capacity</span><b>2 engagements / quarter</b><span>Booked selectively</span></div>
+          <div><span class="mono">Send us</span><b>Scope · Timeline · Budget</b><span>A short brief is enough</span></div>
+        </div>
+
+        <div class="contact__foot reveal" data-delay="4">
+          <a class="text-link" href="./portal.html">Already a client? Open the client portal <span aria-hidden="true">↗</span></a>
+          <span class="mono">Fergana local time — <span data-clock>FER 00:00</span></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section process contact-steps" data-mood="1">
+      <div class="section__inner">
+        <div class="section__head">
+          <div class="eyebrow reveal"><span class="eyebrow__idx">05</span> What happens next</div>
+          <div class="section__head-main">
+            <h2 class="display reveal">How a project<br /><em>starts here.</em></h2>
+            <p class="section__intro reveal" data-delay="1">No sales layer and no discovery theatre. Three steps to know whether we are the right studio for the work.</p>
+          </div>
+        </div>
+
+        <ol class="next-steps">
+          <li class="next-step reveal" style="--d:0ms">
+            <span class="step__num mono">01</span>
+            <h3>You write</h3>
+            <p>A short brief is enough: what you are building, who it serves, when it needs to exist and the budget range you have in mind.</p>
+          </li>
+          <li class="next-step reveal" style="--d:80ms">
+            <span class="step__num mono">02</span>
+            <h3>We reply</h3>
+            <p>Within 24 hours, directly from a founder. We will tell you what we understood, what is unclear, and whether the fit is right.</p>
+          </li>
+          <li class="next-step reveal" style="--d:160ms">
+            <span class="step__num mono">03</span>
+            <h3>A route</h3>
+            <p>A 30-minute call and a scoped plan: architecture, stages, timeline and cost — before any engagement begins.</p>
+          </li>
+        </ol>
+
+        <div class="contact__foot reveal">
+          <a class="text-link" href="./work.html">See what we have shipped <span aria-hidden="true">↗</span></a>
+          <span class="mono">Founder-led · Fergana, Uzbekistan</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__brand">
+        <img class="site-footer__mark" src="./assets/logo-mark.png" alt="" width="30" height="30" />
+        <span class="site-footer__name">Nexora Studio</span>
+        <span class="mono">Digital summits, built to hold.</span>
+      </div>
+
+      <div class="site-footer__cols">
+        <div>
+          <span class="mono">Navigate</span>
+          <a href="./index.html">Home</a>
+          <a href="./studio.html">Studio</a>
+          <a href="./work.html">Work</a>
+          <a href="./journal.html">Journal</a>
+          <a href="./team.html">Team</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./portal.html">Client portal</a>
+        </div>
+        <div>
+          <span class="mono">Contact</span>
+          <a href="mailto:support@nexorastudio.world">Email</a>
+          <a href="mailto:support@nexorastudio.world?subject=Application%20%E2%80%94%20Nexora%20Studio">Careers</a>
+          <a href="./contact.html">Start a project</a>
+        </div>
+        <div>
+          <span class="mono">Status</span>
+          <span class="status"><i aria-hidden="true"></i> Studio open — building</span>
+          <span class="mono"><span data-clock>FER 00:00</span> · UTC+5</span>
+        </div>
+        <div>
+          <span class="mono">Basecamp</span>
+          <span>Fergana, Uzbekistan</span>
+          <span>UTC+5 · Asia/Tashkent</span>
+          <a href="#top">Back to top ↑</a>
+        </div>
+      </div>
+
+      <div class="site-footer__word" aria-hidden="true">NEXORA</div>
+
+      <div class="site-footer__bottom">
+        <span>© 2026 Nexora Studio. All rights reserved.</span>
+        <span>Engineered in Fergana · EN / RU / UZ</span>
+        <span>Digital summits, built to hold.</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sr-only" id="live-region" role="status" aria-live="polite"></div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

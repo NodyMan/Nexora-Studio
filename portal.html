@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Client Portal — Nexora Studio</title>
+  <meta name="description" content="Sign in to follow your project: status, updates, files and invoices from Nexora Studio." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#f4f1e8" />
+  <meta name="color-scheme" content="light" />
+  <link rel="icon" href="./assets/logo-chip.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./assets/logo-chip.svg" />
+  <link rel="stylesheet" href="./portal.css" />
+</head>
+<body>
+  <header class="pbar">
+    <a class="pbar__brand" href="./index.html" aria-label="Nexora Studio — home">
+      <img src="./assets/logo-mark.png" alt="" width="24" height="24" />
+      <span>Nexora Studio</span><small>Client portal</small>
+    </a>
+    <div class="pbar__right">
+      <div class="lang-switch" data-lang-group role="group" aria-label="Language">
+        <button type="button" data-lang="en">EN</button><span aria-hidden="true">/</span><button type="button" data-lang="ru">RU</button><span aria-hidden="true">/</span><button type="button" data-lang="uz">UZ</button>
+      </div>
+      <a class="pbar__link" href="./index.html">Back to site <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main class="portal" id="main" data-portal-root data-view="loading">
+    <!-- Sign in ------------------------------------------------------------>
+    <section class="plogin" id="portal-login" hidden>
+      <div>
+        <div class="plogin__eyebrow mono"><i aria-hidden="true"></i><span>Client portal</span></div>
+        <h1>Your project,<em>in one place.</em></h1>
+        <p class="plogin__lede">Sign in with the email and one-time code your studio contact sent you.</p>
+        <p class="plogin__foot">Need access? Ask your studio contact at Nexora for a new code.</p>
+      </div>
+
+      <div class="pcard pcard--login">
+        <h2>Open portal</h2>
+        <p>Private area for Nexora clients.</p>
+        <form id="portal-form" novalidate>
+          <label class="pfield">
+            <span class="pfield__label">Email</span>
+            <input type="email" name="email" id="portal-email-input" required autocomplete="email" inputmode="email" maxlength="254" placeholder="you@company.com" data-i18n-attr="placeholder:you@company.com" />
+          </label>
+          <label class="pfield pfield--code">
+            <span class="pfield__label">Access code</span>
+            <input type="text" name="code" id="portal-code-input" required autocomplete="one-time-code" inputmode="text" spellcheck="false" maxlength="32" placeholder="XXXX-XXXX" data-no-i18n />
+          </label>
+          <button class="pbtn pbtn--solid pbtn--block" type="submit" id="portal-submit">
+            <span id="portal-submit-label">Open portal</span> <span aria-hidden="true">↗</span>
+          </button>
+          <p class="pstatus" id="portal-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Dashboard --------------------------------------------------------->
+    <section class="pdash" id="portal-dashboard" hidden>
+      <header class="pdash__head">
+        <div class="pdash__hello">
+          <div class="mono" style="margin-bottom:0.6rem">Client portal</div>
+          <h1>Welcome back, <em id="portal-name">—</em></h1>
+          <p><span class="mono">Signed in as</span> <span class="pdash__email" id="portal-session-email" data-no-i18n></span></p>
+        </div>
+        <div class="pdash__account">
+          <div class="pdash__contact">
+            <span class="mono">Your studio contact</span>
+            <a href="mailto:support@nexorastudio.world" data-no-i18n>support@nexorastudio.world</a>
+          </div>
+          <button class="pbtn pbtn--quiet" type="button" id="portal-logout">Sign out</button>
+        </div>
+      </header>
+
+      <div class="pdash__grid">
+        <div class="pcol">
+          <section class="pcard" aria-labelledby="portal-projects-title">
+            <div class="pcard__head"><h2 id="portal-projects-title">Projects</h2><span class="mono" id="portal-projects-count"></span></div>
+            <div id="portal-projects"></div>
+          </section>
+
+          <section class="pcard" aria-labelledby="portal-updates-title">
+            <div class="pcard__head"><h2 id="portal-updates-title">Updates</h2><span class="mono" id="portal-updates-count"></span></div>
+            <div id="portal-updates"></div>
+          </section>
+        </div>
+
+        <div class="pcol">
+          <section class="pcard" aria-labelledby="portal-invoices-title">
+            <div class="pcard__head"><h2 id="portal-invoices-title">Invoices</h2><span class="mono" id="portal-invoices-count"></span></div>
+            <div id="portal-invoices"></div>
+          </section>
+
+          <section class="pcard" aria-labelledby="portal-files-title">
+            <div class="pcard__head"><h2 id="portal-files-title">Files</h2><span class="mono" id="portal-files-count"></span></div>
+            <div id="portal-files"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <div class="pnotice" id="portal-notice" hidden>
+      <p id="portal-notice-text">Could not load your workspace. Try again.</p>
+      <button class="pbtn pbtn--quiet" type="button" id="portal-retry">Try again</button>
+    </div>
+  </main>
+
+  <p class="portal-foot">Private area for Nexora clients.</p>
+
+  <div class="sr-only" id="portal-live" role="status" aria-live="polite" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"></div>
+
+  <script type="module" src="./portal.js"></script>
+</body>
+</html>

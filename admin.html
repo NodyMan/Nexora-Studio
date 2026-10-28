@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Studio Console — Nexora Studio</title>
+  <meta name="description" content="Private studio console for client access, project updates, files and invoices." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#f4f1e8" />
+  <meta name="color-scheme" content="light" />
+  <link rel="icon" href="./assets/logo-chip.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./assets/logo-chip.svg" />
+  <link rel="stylesheet" href="./portal.css" />
+</head>
+<body>
+  <header class="pbar">
+    <a class="pbar__brand" href="./index.html" aria-label="Nexora Studio — home">
+      <img src="./assets/logo-mark.png" alt="" width="24" height="24" />
+      <span>Nexora Studio</span><small>Studio console</small>
+    </a>
+    <div class="pbar__right">
+      <a class="pbar__link" href="./portal.html">Client portal <span aria-hidden="true">↗</span></a>
+      <a class="pbar__link" href="./index.html">Site <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main class="admin" data-admin-root data-view="loading">
+    <section class="admin__login" id="admin-login" hidden>
+      <h1>Studio console</h1>
+      <p>Operations for clients, delivery, invoices and files. The console code is set in the site's private settings.</p>
+      <form id="admin-form" novalidate>
+        <label class="pfield pfield--code">
+          <span class="pfield__label">Console code</span>
+          <input type="password" name="code" id="admin-code-input" required autocomplete="current-password" spellcheck="false" maxlength="200" placeholder="••••••••" />
+        </label>
+        <button class="pbtn pbtn--solid pbtn--block" type="submit" id="admin-submit">
+          <span id="admin-submit-label">Open console</span> <span aria-hidden="true">↗</span>
+        </button>
+        <p class="pstatus" id="admin-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="admin-app" hidden>
+      <header class="admin__head">
+        <div>
+          <div class="mono" style="margin-bottom:0.55rem">Operations</div>
+          <h1>Studio console</h1>
+          <p>Client access, delivery status, invoices and shared files.</p>
+        </div>
+        <div class="admin__head-actions">
+          <button class="pbtn pbtn--quiet" type="button" id="admin-refresh">Refresh</button>
+          <button class="pbtn pbtn--quiet" type="button" id="admin-logout">Sign out</button>
+        </div>
+      </header>
+
+      <div class="admin__stats">
+        <div class="astat"><b id="stat-clients">0</b><span>Clients</span></div>
+        <div class="astat"><b id="stat-inquiries">0</b><span>Open inquiries</span></div>
+        <div class="astat"><b id="stat-projects">0</b><span>Projects</span></div>
+        <div class="astat"><b id="stat-invoices">0</b><span>Unpaid invoices</span></div>
+      </div>
+
+      <div class="admin__tabs" role="tablist" aria-label="Console sections">
+        <button class="admin__tab" type="button" role="tab" aria-selected="true" aria-controls="panel-inquiries" id="tab-inquiries" data-tab="inquiries">Inquiries <small id="tab-count-inquiries"></small></button>
+        <button class="admin__tab" type="button" role="tab" aria-selected="false" aria-controls="panel-clients" id="tab-clients" data-tab="clients">Clients <small id="tab-count-clients"></small></button>
+        <button class="admin__tab" type="button" role="tab" aria-selected="false" aria-controls="panel-delivery" id="tab-delivery" data-tab="delivery">Delivery</button>
+        <button class="admin__tab" type="button" role="tab" aria-selected="false" aria-controls="panel-invoices" id="tab-invoices" data-tab="invoices">Invoices</button>
+        <button class="admin__tab" type="button" role="tab" aria-selected="false" aria-controls="panel-files" id="tab-files" data-tab="files">Files</button>
+      </div>
+
+      <div class="admin__panel" id="panel-inquiries" role="tabpanel" aria-labelledby="tab-inquiries">
+        <section class="pcard">
+          <div class="pcard__head"><h2>Incoming briefs</h2><span class="mono" id="admin-inquiries-count"></span></div>
+          <div id="admin-inquiries"></div>
+        </section>
+      </div>
+
+      <div class="admin__panel" id="panel-clients" role="tabpanel" aria-labelledby="tab-clients" hidden>
+        <div class="admin__split">
+          <section class="pcard">
+            <div class="pcard__head"><h2>Clients</h2><span class="mono" id="admin-clients-count"></span></div>
+            <div id="admin-clients"></div>
+          </section>
+          <section class="pcard">
+            <div class="pcard__head"><h2>New client</h2><span class="mono">Access by code</span></div>
+            <form id="client-form" novalidate>
+              <div class="agrid2">
+                <label class="pfield"><span class="pfield__label">Contact name</span><input type="text" name="name" required maxlength="120" autocomplete="off" /></label>
+                <label class="pfield"><span class="pfield__label">Company</span><input type="text" name="company" required maxlength="160" autocomplete="off" /></label>
+              </div>
+              <label class="pfield"><span class="pfield__label">Email</span><input type="email" name="email" required maxlength="254" autocomplete="off" inputmode="email" /></label>
+              <button class="pbtn pbtn--solid" type="submit">Create client</button>
+              <div id="admin-code"></div>
+            </form>
+          </section>
+        </div>
+      </div>
+
+      <div class="admin__panel" id="panel-delivery" role="tabpanel" aria-labelledby="tab-delivery" hidden>
+        <div class="admin__split admin__split--wide">
+          <section class="pcard">
+            <div class="pcard__head"><h2>Projects</h2><span class="mono" id="admin-projects-count"></span></div>
+            <div id="admin-projects"></div>
+          </section>
+          <div class="pcol">
+            <section class="pcard">
+              <div class="pcard__head"><h2>New project</h2><span class="mono">Status + progress</span></div>
+              <form id="project-form" novalidate>
+                <label class="pfield"><span class="pfield__label">Client</span><select name="clientId" data-client-select required></select></label>
+                <label class="pfield"><span class="pfield__label">Project name</span><input type="text" name="name" required maxlength="140" /></label>
+                <label class="pfield"><span class="pfield__label">One-line summary</span><input type="text" name="summary" maxlength="600" /></label>
+                <div class="agrid2">
+                  <label class="pfield"><span class="pfield__label">Status</span>
+                    <select name="status">
+                      <option value="discovery">Discovery</option>
+                      <option value="building">In build</option>
+                      <option value="review">In review</option>
+                      <option value="live">Live</option>
+                      <option value="paused">Paused</option>
+                    </select>
+                  </label>
+                  <label class="pfield"><span class="pfield__label">Progress %</span><input type="number" name="progress" min="0" max="100" step="1" value="0" /></label>
+                  <label class="pfield"><span class="pfield__label">Phase</span><input type="text" name="phase" maxlength="80" placeholder="Architecture" /></label>
+                  <label class="pfield"><span class="pfield__label">Start</span><input type="date" name="startDate" /></label>
+                  <label class="pfield"><span class="pfield__label">Target</span><input type="date" name="targetDate" /></label>
+                </div>
+                <button class="pbtn pbtn--solid" type="submit">Add project</button>
+              </form>
+            </section>
+
+            <section class="pcard">
+              <div class="pcard__head"><h2>Post update</h2><span class="mono">Visible to client</span></div>
+              <form id="update-form" novalidate>
+                <label class="pfield"><span class="pfield__label">Client</span><select name="clientId" data-client-select required></select></label>
+                <label class="pfield"><span class="pfield__label">Project (optional)</span><select name="projectId" data-project-select></select></label>
+                <label class="pfield"><span class="pfield__label">Title</span><input type="text" name="title" required maxlength="160" /></label>
+                <label class="pfield"><span class="pfield__label">Update</span><textarea name="body" required maxlength="4000" rows="4"></textarea></label>
+                <button class="pbtn pbtn--solid" type="submit">Publish update</button>
+              </form>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin__panel" id="panel-invoices" role="tabpanel" aria-labelledby="tab-invoices" hidden>
+        <div class="admin__split admin__split--wide">
+          <section class="pcard">
+            <div class="pcard__head"><h2>Invoices</h2><span class="mono" id="admin-invoices-count"></span></div>
+            <div id="admin-invoices"></div>
+          </section>
+          <section class="pcard">
+            <div class="pcard__head"><h2>New invoice</h2><span class="mono">Client view</span></div>
+            <form id="invoice-form" novalidate>
+              <label class="pfield"><span class="pfield__label">Client</span><select name="clientId" data-client-select required></select></label>
+              <label class="pfield"><span class="pfield__label">Project (optional)</span><select name="projectId" data-project-select></select></label>
+              <div class="agrid2">
+                <label class="pfield"><span class="pfield__label">Number</span><input type="text" name="number" required maxlength="40" placeholder="NX-2026-04" /></label>
+                <label class="pfield"><span class="pfield__label">Amount</span><input type="number" name="amount" required min="0" max="1000000000000" step="1" placeholder="4800" /></label>
+                <label class="pfield"><span class="pfield__label">Currency</span>
+                  <select name="currency"><option value="USD">USD</option><option value="UZS">UZS</option><option value="EUR">EUR</option></select>
+                </label>
+                <label class="pfield"><span class="pfield__label">Status</span>
+                  <select name="status"><option value="sent">Sent</option><option value="draft">Draft</option><option value="paid">Paid</option><option value="overdue">Overdue</option></select>
+                </label>
+                <label class="pfield"><span class="pfield__label">Issued</span><input type="date" name="issuedDate" required /></label>
+                <label class="pfield"><span class="pfield__label">Due</span><input type="date" name="dueDate" /></label>
+              </div>
+              <label class="pfield"><span class="pfield__label">Note (optional)</span><input type="text" name="note" maxlength="300" /></label>
+              <button class="pbtn pbtn--solid" type="submit">Issue invoice</button>
+            </form>
+          </section>
+        </div>
+      </div>
+
+      <div class="admin__panel" id="panel-files" role="tabpanel" aria-labelledby="tab-files" hidden>
+        <div class="admin__split admin__split--wide">
+          <section class="pcard">
+            <div class="pcard__head"><h2>Shared files</h2><span class="mono" id="admin-files-count"></span></div>
+            <div id="admin-files"></div>
+          </section>
+          <section class="pcard">
+            <div class="pcard__head"><h2>Share a file</h2><span class="mono">Max 25 MB</span></div>
+            <form id="file-form" novalidate>
+              <label class="pfield"><span class="pfield__label">Client</span><select name="clientId" data-client-select required></select></label>
+              <label class="pfield"><span class="pfield__label">Project (optional)</span><select name="projectId" data-project-select></select></label>
+              <label class="pfield"><span class="pfield__label">File</span><input type="file" name="file" required accept=".pdf,.png,.jpg,.jpeg,.webp,.svg,.txt,.zip,.docx,.xlsx,.pptx" /></label>
+              <button class="pbtn pbtn--solid" type="submit">Upload and share</button>
+              <p class="pstatus" id="file-status" role="status" aria-live="polite"></p>
+            </form>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <div class="pnotice" id="admin-notice" hidden>
+      <p id="admin-notice-text">Could not load the console. Refresh to try again.</p>
+      <button class="pbtn pbtn--quiet" type="button" id="admin-retry">Retry</button>
+    </div>
+  </main>
+
+  <div class="admin__toast" id="admin-toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="./admin.js"></script>
+</body>
+</html>
