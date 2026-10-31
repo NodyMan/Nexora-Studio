@@ -1,0 +1,37 @@
+name: Build Neo APK
+on:
+  push:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find app code
+        run: |
+          if [ -f neo_app.zip ]; then unzip -o -q neo_app.zip; echo "APP=neo_app" >> $GITHUB_ENV; else echo "APP=." >> $GITHUB_ENV; fi
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+      - name: Build APK
+        working-directory: ${{ env.APP }}
+        run: |
+          if [ -f tool/prepare_android.sh ]; then
+            bash tool/prepare_android.sh
+          else
+            flutter create --platforms=android --org uz.max --project-name neo_app .
+            sed -i '0,/<application/s//<uses-permission android:name="android.permission.INTERNET"\/>\n    <application/' android/app/src/main/AndroidManifest.xml
+          fi
+          flutter pub get
+          flutter build apk --release
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: Neo app build ${{ github.run_number }}
+          files: ${{ env.APP }}/build/app/outputs/flutter-apk/app-release.apk
